@@ -19,9 +19,9 @@ window#waybar {
 #workspaces button {
   padding: 3px;
   margin: 7px 0px 7px 7px;
-  background: transparent;
+  /* background: transparent; */
   border-radius: 10px;
-  color: white;
+  color: @dark-5;
 }
 
 #workspaces button.active {
@@ -36,7 +36,8 @@ window#waybar {
 #tray,
 #clock,
 #volume,
-#system {
+#system,
+#language {
   border-radius: 160px;
   padding: 4px 10px;
   background: @dark-8;

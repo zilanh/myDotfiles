@@ -8,19 +8,19 @@
     "group/volume",
     "bluetooth",
     // "network",
+    "hyprland/language",
     "tray",
     "group/system"
   ],
-  "hyprland/window": {
-      "max-length": 50
+
+
+"hyprland/language": {
+    "format": "{short}"
   },
 
 "hyprland/workspaces": {
-    "disable-scroll": false,
-    "all-outputs": true,
-    "on-click": "activate",
-    "format": "{name}",
-  },
+	"format": "{name}",
+},
 
   "battery": {
     "interval": 60,

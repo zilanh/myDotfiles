@@ -61,6 +61,7 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("pkill rofi || rofi -show drun"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
+hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("pkill waybar || waybar"))
 hl.bind(mainMod .. " + ISO_Level3_Shift", hl.dsp.exec_cmd("hyprctl switchxkblayout all next"))
 hl.bind(
 	mainMod .. " + V",

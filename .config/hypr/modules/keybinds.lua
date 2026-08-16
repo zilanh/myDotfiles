@@ -27,6 +27,31 @@ hl.bind(mainMod .. " + W", hl.dsp.window.close())
 hl.bind("switch:off:Lid Switch", hl.dsp.exec_cmd("hyprlock"), { locked = true })
 hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("notify-send 'yoooo welcome back'"), { locked = true })
 
+hl.bind(mainMod .. " + F1", function()
+	local game_mode = (hl.get_config("animations.enabled") == false)
+
+	if game_mode then
+		hl.exec_cmd("hyprctl reload")
+		return
+	end
+	hl.config({
+		general = {
+			gaps_in = 0,
+			gaps_out = 0, -- Disable gaps
+			border_size = 0,
+		},
+		animations = {
+			enabled = false, -- Disable animations
+		},
+		-- Disable blur, shadow and window rounding
+		decoration = {
+			shadow = { enabled = false },
+			blur = { enabled = false },
+			rounding = 0,
+		},
+	})
+end)
+
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("pkill wlogout || wlogout"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))

@@ -1,0 +1,8 @@
+[user]
+  name = Leo Collin
+  username = zilanh
+  email = leo.collinh@gmail.com
+[core]
+  editor = nvim
+[init]
+	defaultBranch = main

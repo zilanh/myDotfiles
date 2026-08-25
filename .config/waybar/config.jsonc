@@ -8,14 +8,18 @@
     "group/volume",
     "bluetooth",
     // "network",
-    "hyprland/language",
     "tray",
+    "hyprland/language",
     "group/system"
   ],
 
 
 "hyprland/language": {
-    "format": "{short}"
+    
+    // "format": "{}",
+    "format": "{short}",
+    // "format-en": "en",
+    // "format-sv": "se"
   },
 
 "hyprland/workspaces": {

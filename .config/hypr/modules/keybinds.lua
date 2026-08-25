@@ -2,6 +2,10 @@
 local terminal = "foot"
 local fileManager = terminal .. " -e yazi"
 local browser = "firefox"
+
+local function test()
+	hl.exec_cmd("notify-send 'Test'")
+end
 -- local menu = "rofi -show jrun"
 
 ---- KEYBINDINGS ----
@@ -24,7 +28,7 @@ hl.bind(mainMod .. " + W", hl.dsp.window.close())
 -- 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 -- )
 
-hl.bind("switch:off:Lid Switch", hl.dsp.exec_cmd("hyprlock"), { locked = true })
+hl.bind("switch:Lid Switch", hl.dsp.exec_cmd("hyprlock"), { locked = true })
 hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("notify-send 'yoooo welcome back'"), { locked = true })
 
 hl.bind(mainMod .. " + F1", function()
@@ -50,6 +54,17 @@ hl.bind(mainMod .. " + F1", function()
 			rounding = 0,
 		},
 	})
+end)
+
+local monitorOn = true
+hl.bind("XF86Display", function()
+	if monitorOn then
+		hl.exec_cmd("brightnessctl -s set 0")
+		monitorOn = false
+	else
+		hl.exec_cmd("brightnessctl -r")
+		monitorOn = true
+	end
 end)
 
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))

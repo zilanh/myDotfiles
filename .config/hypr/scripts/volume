@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 iDIR="$HOME/.config/mako/icons"
+notifTime=500
 
 # Get Volume
 get_volume() {
@@ -24,7 +25,7 @@ get_icon() {
 
 # Notify
 notify_user() {
-  notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume : $(get_volume) %"
+  notify-send -t $notifTime -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume : $(get_volume) %"
 }
 
 # Increase Volume

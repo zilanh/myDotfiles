@@ -23,7 +23,7 @@ hl.monitor({
 	output = "desc:XGM XGIMI TV 0x00000001",
 	mode = "1920x1080@60",
 	supports_hdr = 1,
-	mirror = "eDP-1",
+	-- mirror = "eDP-1",
 	position = "auto",
 	scale = 1,
 })

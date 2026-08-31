@@ -23,7 +23,7 @@ hl.on("hyprland.start", function()
 		match = {
 			class = "firefox",
 		},
-		workspace = "7",
+		workspace = "1",
 	})
 end)
 

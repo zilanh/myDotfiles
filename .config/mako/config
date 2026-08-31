@@ -21,36 +21,36 @@ on-touch=invoke-default-action
 font= JetBrains Mono 10
 
 # background color of notification( #RRGGBB | #RRGGBBAA )
-background-color=#000000
+background-color=#FFFFFF
 
 # Text color inside the notification( #RRGGBB | #RRGGBBAA )
-text-color=#FFFFFF
+text-color=#000000
 
 # Set width of notification popup.( value in px )
-width=299
+# width=299
 
 # maximum height of notification( value in px )
 height=99
 
 # margin of notification which is margin for the list of notification block( value in px ).
-outer-margin=1
+outer-margin=3
 # Margin of each individual notification
-margin=0
+margin=4
 
 # Set padding on each side to the size specified by directional( value in px )
-padding=10
+padding=4
 
 #Set popup border size to px pixels.(value in px )
-border-size=1
+border-size=2
 
 # color of border of each notification( #RRGGBB | #RRGGBBAA )
-border-color=#FFFFFF
+border-color=#000000
 
-# bordear radius of each notification(value in px )
-border-radius=0
+# border radius of each notification(value in px )
+border-radius=9
 
 # Set popup progress indicator color to color.( value [over|source] ( #RRGGBB | #RRGGBBAA ))
-progress-color=over #0b1c1c
+progress-color=over #FFFFFF
 
 # Show icons in notifications.( value: -1 | 1 )
 icons=1
@@ -77,7 +77,7 @@ history=1
 format= <b>%s</b>\n%b
 
 #  Set notification text alignment.( value: left|right|center )
-text-alignment=center
+text-alignment=left
 
 # Set the default timeout to timeout in milliseconds.
 default-timeout=6000

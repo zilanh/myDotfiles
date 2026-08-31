@@ -3,6 +3,9 @@ local terminal = "foot"
 local fileManager = terminal .. " -e yazi"
 local browser = "firefox"
 
+local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+
+local monitorOff = false
 local function test()
 	hl.exec_cmd("notify-send 'Test'")
 end
@@ -15,7 +18,6 @@ hl.config({
 		workspace_back_and_forth = true,
 	},
 })
-local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. "+ Return", hl.dsp.exec_cmd(terminal))
@@ -28,8 +30,13 @@ hl.bind(mainMod .. " + W", hl.dsp.window.close())
 -- 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 -- )
 
-hl.bind("switch:Lid Switch", hl.dsp.exec_cmd("hyprlock"), { locked = true })
-hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("notify-send 'yoooo welcome back'"), { locked = true })
+hl.bind("switch:Lid Switch", function()
+	if not monitorOff then
+		hl.exec_cmd("hyprlock")
+	end
+end, { locked = true })
+
+-- hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("notify-send 'yoooo welcome back'"), { locked = true })
 
 hl.bind(mainMod .. " + F1", function()
 	local game_mode = (hl.get_config("animations.enabled") == false)
@@ -56,24 +63,13 @@ hl.bind(mainMod .. " + F1", function()
 	})
 end)
 
-local monitorOn = true
-hl.bind("XF86Display", function()
-	if monitorOn then
-		hl.exec_cmd("brightnessctl -s set 0")
-		monitorOn = false
-	else
-		hl.exec_cmd("brightnessctl -r")
-		monitorOn = true
-	end
-end)
-
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("pkill wlogout || wlogout"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("pkill rofi || rofi -show drun"))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("pkill rofi || rofi -show combi -modes combi -combi-modes 'window,drun'"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("pkill waybar || waybar"))
@@ -85,8 +81,13 @@ hl.bind(
 
 -- Screenshots
 local saveLocation = "$HOME/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png"
-hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim - | tee " .. saveLocation .. " | wl-copy"))
-hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | ' .. saveLocation .. " | wl-copy"))
+hl.bind("Print", hl.dsp.exec_cmd("grim - | tee " .. saveLocation .. " | wl-copy"))
+hl.bind("SHIFT + Print", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | tee ' .. saveLocation .. " | wl-copy"))
+-- hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim - | tee " .. saveLocation .. " | wl-copy"))
+-- hl.bind(
+-- 	mainMod .. " + SHIFT + Print",
+-- 	hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | tee ' .. saveLocation .. " | wl-copy")
+-- )
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
@@ -190,7 +191,25 @@ hl.bind(
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("~/.config/hypr/scripts/volume --toggle"), { locked = true })
 
 -- Screen brightness
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("~/.config/hypr/scripts/backlight --inc"), { locked = true })
+hl.bind("XF86Display", function()
+	if not monitorOff then
+		hl.exec_cmd("wlopm --off eDP-1")
+		monitorOff = true
+	else
+		hl.exec_cmd("wlopm --on eDP-1")
+		monitorOff = false
+	end
+end)
+
+-- hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("~/.config/hypr/scripts/backlight --inc"), { locked = true })
+hl.bind("XF86MonBrightnessUp", function()
+	if monitorOff then
+		hl.exec_cmd("wlopm --on eDP-1")
+		monitorOff = false
+	else
+		hl.exec_cmd("~/.config/hypr/scripts/backlight --inc")
+	end
+end, { locked = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("~/.config/hypr/scripts/backlight --dec"), { locked = true })
 
 -- Requires playerctl

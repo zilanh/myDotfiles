@@ -21,7 +21,7 @@ on-touch=invoke-default-action
 font= JetBrains Mono 10
 
 # background color of notification( #RRGGBB | #RRGGBBAA )
-background-color=#FFFFFF
+background-color=#FFFFFF99
 
 # Text color inside the notification( #RRGGBB | #RRGGBBAA )
 text-color=#000000
@@ -93,3 +93,11 @@ layer=top
 
 # Show notifications at the specified position on the output.
 anchor=top-right
+
+
+
+[category=top-center]
+anchor=top-center
+
+[app-name=hello]
+anchor=bottom-center

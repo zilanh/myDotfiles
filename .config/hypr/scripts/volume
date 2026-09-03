@@ -1,12 +1,11 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 iDIR="$HOME/.config/mako/icons"
 notifTime=500
 
 # Get Volume
 get_volume() {
-  volume=$(pamixer --get-volume)
-  echo "$volume"
+wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}'
 }
 
 # Get icons
@@ -25,17 +24,24 @@ get_icon() {
 
 # Notify
 notify_user() {
-  notify-send -t $notifTime -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume : $(get_volume) %"
+  local vol=$(get_volume)
+  notify-send \
+    -t $notifTime \
+    -a sys-notify \
+    -h string:x-canonical-private-synchronous:sys-notify \
+    -h int:value:"$vol" \
+    -u low \
+    ""
 }
 
 # Increase Volume
 inc_volume() {
-  pamixer -i 5 && notify_user
+  wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+ && notify_user
 }
 
 # Decrease Volume
 dec_volume() {
-  pamixer -d 5 && notify_user
+  wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && notify_user
 }
 
 # Toggle Mute

@@ -8,6 +8,7 @@ alias grep='grep --color=auto'
 alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 alias v='nvim'
 alias vpn="sudo wg-quick"
+alias cd="z"
 autoload -Uz compinit promptinit
 
 compinit

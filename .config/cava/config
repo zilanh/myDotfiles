@@ -3,7 +3,7 @@
 
 
 [general]
-
+theme='matugen-theme'
 # Auto reload config if the configuration file has changed. 1 = on, 0 = off.
 ; live-config = 0
 

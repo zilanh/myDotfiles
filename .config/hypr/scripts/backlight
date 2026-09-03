@@ -1,11 +1,15 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 iDIR="$HOME/.config/mako/icons"
 notifTime=500
 
+expVal=4
+
 # Get brightness
 get_backlight() {
-  LIGHT=$(printf "%.0f\n" "$(brightnessctl g)")
+  val=$(brightnessctl g)
+  maxLight=$(brightnessctl m)
+  LIGHT=$(printf "%.0f\n" "$(((1.0 * val / maxLight) ** (1.0 / expVal) * 100))")
   echo "${LIGHT}"
 }
 
@@ -27,17 +31,25 @@ get_icon() {
 
 # Notify
 notify_user() {
-  notify-send -t $notifTime -h string:x-canonical-private-synchronous:sys-notify -u low -i "$icon" "Brightness : $(get_backlight)"
+  light=$(get_backlight)
+  notify-send \
+    -t $notifTime \
+    -a sys-notify \
+    -h string:x-canonical-private-synchronous:sys-notify \
+    -h int:value:"$light" \
+    -u low \
+    -i "$icon" \
+    ""
 }
 
 # Increase brightness
 inc_backlight() {
-  brightnessctl -e4 set +5% && get_icon && notify_user
+  brightnessctl --exponent=$expVal set +5% && get_icon && notify_user
 }
 
 # Decrease brightness
 dec_backlight() {
-  brightnessctl -n2 -e4 set 5%- && get_icon && notify_user
+  brightnessctl -n2 --exponent=$expVal set 5%- && get_icon && notify_user
 }
 
 # Execute accordingly

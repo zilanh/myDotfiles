@@ -13,11 +13,6 @@ end
 
 ---- KEYBINDINGS ----
 ---------------------
-hl.config({
-	binds = {
-		workspace_back_and_forth = true,
-	},
-})
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. "+ Return", hl.dsp.exec_cmd(terminal))

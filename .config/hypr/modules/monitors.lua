@@ -12,7 +12,7 @@ hl.monitor({
 
 hl.monitor({
 	output = "",
-	mode = "preferred",
+	mode = "1920x1200@60",
 	-- mode = "auto",
 	-- supports_hdr = 1,
 	mirror = "eDP-1",

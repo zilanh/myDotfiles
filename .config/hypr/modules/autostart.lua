@@ -10,14 +10,13 @@
 hl.on("hyprland.start", function()
 	hl.exec_cmd("systemctl --user start hyprland-session.target")
 	hl.exec_cmd("nm-applet")
-	-- hl.exec_cmd("bluetui")
 	hl.exec_cmd("hypridle")
 	hl.exec_cmd("waybar & hyprpaper")
 	hl.exec_cmd("firefox")
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
 	hl.exec_cmd("udiskie &")
-
+	hl.exec_cmd("batsignal")
 	hl.window_rule({
 		-- name = "terminal-WS1",
 		match = {

@@ -2,7 +2,7 @@
 local terminal = "foot"
 local fileManager = "~/.config/hypr/scripts/yazi-term"
 local browser = "firefox"
-
+local textEditor = "foot nvim ~/Documents/Notes"
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 local monitorOff = false
@@ -77,6 +77,7 @@ hl.bind(mainMod .. " + F1", function()
 	})
 end)
 
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("foot -D ~/Documents/Notes  nvim"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))

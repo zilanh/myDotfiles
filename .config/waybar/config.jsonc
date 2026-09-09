@@ -15,12 +15,11 @@
 
 
 "hyprland/language": {
-    
-    // "format": "{}",
-    "format": "{short}",
-    // "format-en": "en",
-    // "format-sv": "se"
-  },
+    "format": "{}",
+    "format-sv": "se",
+    "format-en": "en",
+    "keyboard-name": "at-translated-set-2-keyboard"
+},
 
 "hyprland/workspaces": {
 	"format": "{name}",
@@ -129,6 +128,6 @@
 
   "group/system": {
     "orientation": "horizontal",
-    "modules": ["battery", "cpu", "memory"]
+    "modules": ["cpu", "memory", "battery" ]
   }
 }

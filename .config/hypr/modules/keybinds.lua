@@ -1,6 +1,6 @@
 ---------------------
 local terminal = "foot"
-local fileManager = terminal .. " -e yazi"
+local fileManager = "~/.config/hypr/scripts/yazi-term"
 local browser = "firefox"
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
@@ -9,7 +9,6 @@ local monitorOff = false
 local function test()
 	hl.exec_cmd("notify-send 'Test'")
 end
--- local menu = "rofi -show jrun"
 
 ---- KEYBINDINGS ----
 ---------------------
@@ -25,13 +24,33 @@ hl.bind(mainMod .. " + W", hl.dsp.window.close())
 -- 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 -- )
 
-hl.bind("switch:Lid Switch", function()
+hl.bind("switch:on:Lid Switch", function()
 	if not monitorOff then
-		hl.exec_cmd("hyprlock")
+		hl.exec_cmd("pidof hyprlock || hyprlock")
 	end
 end, { locked = true })
 
--- hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("notify-send 'yoooo welcome back'"), { locked = true })
+hl.bind("switch:off:Lid Switch", hl.dsp.exec_cmd("notify-send 'yoooo welcome back'"), { locked = true })
+hl.bind(mainMod .. " + M", hl.dsp.submap("menu"))
+hl.define_submap("menu", function()
+	hl.bind("escape", hl.dsp.submap("reset"))
+	hl.bind("B", function()
+		hl.dispatch(hl.dsp.exec_cmd("foot -e bluetui"))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	hl.bind("S", function()
+		hl.dispatch(hl.dsp.exec_cmd("foot wiremix --tab output"))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	hl.bind("W", function()
+		hl.dispatch(hl.dsp.exec_cmd("networkmanager_dmenu"))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	hl.bind("L", function()
+		hl.dispatch(hl.dsp.exec_cmd("hyprlock"))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+end)
 
 hl.bind(mainMod .. " + F1", function()
 	local game_mode = (hl.get_config("animations.enabled") == false)
@@ -44,7 +63,7 @@ hl.bind(mainMod .. " + F1", function()
 		general = {
 			gaps_in = 0,
 			gaps_out = 0, -- Disable gaps
-			border_size = 0,
+			border_size = 1,
 		},
 		animations = {
 			enabled = false, -- Disable animations
@@ -59,12 +78,15 @@ hl.bind(mainMod .. " + F1", function()
 end)
 
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("pkill wlogout || wlogout"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("pkill rofi || rofi -show combi -modes combi -combi-modes 'window,drun'"))
+hl.bind(
+	mainMod .. " + Space",
+	hl.dsp.exec_cmd("pkill rofi || rofi -show combi -modes combi -combi-modes 'window,drun'")
+)
+hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("pkill rofi || rofi -show recursivebrowser"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("pkill waybar || waybar"))

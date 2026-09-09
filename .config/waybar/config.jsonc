@@ -124,7 +124,7 @@
   },
   "group/volume": {
     "orientation": "horizontal",
-    "modules": ["pulseaudio", "pulseaudio/slider"]
+    "modules": ["pulseaudio" ]
   },
 
   "group/system": {

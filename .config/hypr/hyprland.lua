@@ -11,7 +11,7 @@
 
 -- Sourcing files
 
--- require("colors")
+require("colors")
 require("modules/monitors")
 require("modules/autostart")
 require("modules/permissions")

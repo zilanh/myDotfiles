@@ -1,5 +1,4 @@
 alias logout="loginctl kill-user leo"
-# alias z="zoxide"
 alias pacs="sudo pacman -S"
 alias pacq="pacman -Q"
 alias config="nvim .config"
@@ -8,13 +7,23 @@ alias grep='grep --color=auto'
 alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 alias v='nvim'
 alias vpn="sudo wg-quick"
+alias vpn-down="sudo wg-quick down se-sto && wg-quick down fi-hel && wg-quick down fr-par"
 alias cd="z"
+alias ff='fastfetch'
 autoload -Uz compinit promptinit
-
 compinit
 promptinit
 
-bindkey -v
+bindkey -v # Vim keybindings
+
+# Open directory in terminal when quitting yazi 
+function yazi_termdir() {
+	local tmp cwd; tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
+	command rm -f -- "$tmp"
+}
 
 # Change cursor shape based on Vi mode
 function zle-keymap-select {

@@ -1,3 +1,4 @@
+@import "colors.rasi"
 configuration {
 /*	modes: "window,drn,rn,ssh";*/
 font: "JetBrainsMono NF 16";
@@ -6,6 +7,15 @@ font: "JetBrainsMono NF 16";
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
 show-icons: true;
+
+kb-row-up: "Up,K";
+kb-row-down: "Down,J";
+  recursivebrowser{
+  show-hidden: true;
+  }
+    filebrowser{
+    show-hidden: true;
+  }
 /*	preview-cmd: ;*/
 /*	on-selection-changed: ;*/
 /*	on-mode-changed: ;*/

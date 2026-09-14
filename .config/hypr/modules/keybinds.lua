@@ -98,9 +98,13 @@ hl.bind(
 )
 
 -- Screenshots
+local notifyScreenshot = "notify-send -t 1000 'Screenshot taken'"
 local saveLocation = "$HOME/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png"
-hl.bind("Print", hl.dsp.exec_cmd("grim - | tee " .. saveLocation .. " | wl-copy"))
-hl.bind("SHIFT + Print", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | tee ' .. saveLocation .. " | wl-copy"))
+hl.bind("Print", hl.dsp.exec_cmd("grim - | tee " .. saveLocation .. " | wl-copy && " .. notifyScreenshot))
+hl.bind(
+	"SHIFT + Print",
+	hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | tee ' .. saveLocation .. " | wl-copy && " .. notifyScreenshot)
+)
 -- hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim - | tee " .. saveLocation .. " | wl-copy"))
 -- hl.bind(
 -- 	mainMod .. " + SHIFT + Print",

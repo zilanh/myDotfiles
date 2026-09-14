@@ -18,7 +18,7 @@ window#waybar {
 
 #workspaces button {
   padding: 0px 9px;
-  margin: 5px 0px 5px 7px;
+  margin: 4px 0px 0px 7px;
   /* background: transparent; */
   border-radius: 25px;
   color:  @dark-5;
@@ -41,11 +41,11 @@ window#waybar {
   border-radius: 40px;
   padding: 0px 9px;
   background: @dark-8;
-  margin: 3px 4px 3px 4px;
+  margin: 3px 7px;
 }
 
 #memory {
- margin: 0px 10px 0px 10px;
+ margin: 0px 19px
 }
 
 #submap,
@@ -54,34 +54,7 @@ window#waybar {
   color: black;
 }
 
-#pulseaudio-slider {
-  padding: 0px;
-  margin: 0px;
-  margin-left: 8px;
-}
 
-#pulseaudio-slider slider {
-  all: unset;
-  min-height: 0;
-  min-width: 0;
-  opacity: 0;
-  background-image: none;
-  border: none;
-  box-shadow: none;
-}
-
-#pulseaudio-slider trough {
-  min-height: 8px;
-  min-width: 75px;
-  border-radius: 5px;
-  background: @dark-7;
-}
-
-#pulseaudio-slider highlight {
-  min-width: 10px;
-  border-radius: 5px;
-  background: @highlight;
-}
 
 tooltip {
   background: @dark-9;

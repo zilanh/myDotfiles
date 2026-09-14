@@ -50,3 +50,4 @@ precmd_functions+=(_reset_cursor_shape)
 
 eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(zoxide init zsh)"
+eval "$(thefuck --alias)"

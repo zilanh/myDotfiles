@@ -4,7 +4,18 @@ program_options:
   automount: true        # Enable automatic mounting
   file_manager: xdg-open # Program to open mounted directories
 
+device_config:
+  - id_uuid: "17248f7a-4db9-4919-a5d2-4cdce36db74a"
+    automount: false
+
+  - id_uuid: "A4EA-249D"
+    automount: false
+    ignore: true
 
 notifications:
   timeout: 1.5           # Notification timeout in seconds
-  device_mounted: 5      # Show mount notifications for 5 seconds
+  device_mounted: 7      # Show mount notifications for 5 seconds
+  terminal: "foot -e yazi"
+
+notification_actions:
+  device_mounted: [browse]

@@ -1,8 +1,8 @@
 ---------------------
 local terminal = "foot"
-local fileManager = "~/.config/hypr/scripts/yazi-term"
+local fileManager = "$HOME/.config/hypr/scripts/yazi-term"
 local browser = "firefox"
-local textEditor = "foot nvim ~/Documents/Notes"
+
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 local monitorOff = false
@@ -26,7 +26,7 @@ hl.bind(mainMod .. " + W", hl.dsp.window.close())
 
 hl.bind("switch:on:Lid Switch", function()
 	if not monitorOff then
-		hl.exec_cmd("pidof hyprlock || hyprlock")
+		hl.exec_cmd("pidof hyprlock || hyprlock --no-fade-in")
 	end
 end, { locked = true })
 
@@ -48,6 +48,12 @@ hl.define_submap("menu", function()
 	end)
 	hl.bind("L", function()
 		hl.dispatch(hl.dsp.exec_cmd("hyprlock"))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	hl.bind("T", function()
+		hl.dispatch(
+			hl.dsp.exec_cmd("matugen image $HOME/Pictures/Wallpapers/$(ls $HOME/Pictures/Wallpapers/ | rofi -dmenu)")
+		)
 		hl.dispatch(hl.dsp.submap("reset"))
 	end)
 end)
@@ -75,9 +81,9 @@ hl.bind(mainMod .. " + F1", function()
 			rounding = 0,
 		},
 	})
-end)
+end, { locked = true })
 
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("foot -D ~/Documents/Notes  nvim"))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("foot -D $HOME/Documents/Notes  nvim"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
@@ -197,20 +203,20 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 -- hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 hl.bind(
 	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("~/.config/hypr/scripts/volume --inc"),
+	hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/volume --inc"),
 	{ locked = false, repeating = true }
 )
 hl.bind(
 	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("~/.config/hypr/scripts/volume --dec"),
+	hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/volume --dec"),
 	{ locked = true, repeating = true }
 )
 hl.bind(
 	"XF86AudioMicMute",
-	hl.dsp.exec_cmd("~/.config/hypr/scripts/volume --toggle-mic"),
+	hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/volume --toggle-mic"),
 	{ locked = true, repeating = true }
 )
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("~/.config/hypr/scripts/volume --toggle"), { locked = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/volume --toggle"), { locked = true })
 
 -- Screen brightness
 hl.bind("XF86Display", function()

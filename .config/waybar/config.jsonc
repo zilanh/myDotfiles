@@ -13,6 +13,10 @@
     "group/system"
   ],
 
+"hyprland/submap": {
+    "format": "{}",
+    "tooltip": "false"
+  },
 
 "hyprland/language": {
     "format": "{}",

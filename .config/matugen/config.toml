@@ -5,7 +5,7 @@ source_color_index = 1
 
 [config.wallpaper]
 # Whether to set the wallpaper or not
-set = false 
+set = true
 command = "hyprctl hyprpaper wallpaper ', {{image}}'"
 
 [templates.btop]
@@ -16,7 +16,7 @@ post_hook = 'pkill -USR2 btop || true'
 [templates.cava]
 input_path = '~/.config/matugen/templates/cava-colors.ini'
 output_path = '~/.config/cava/themes/matugen-theme'
-post_hook = 'pkill -USR1 cava || tru '
+post_hook = 'pkill -USR1 cava || true '
 
 [templates.foot]
 input_path  = '~/.config/matugen/templates/foot-colors.ini'
@@ -44,10 +44,6 @@ output_path = '~/.config/hypr/colors.lua' # If using lua config replace *.conf* 
 [templates.hyprlock]
 input_path = '~/.config/matugen/templates/hyprland-colors.conf'
 output_path = '~/.config/hypr/colors.conf' # If using lua config replace *.conf* with *.lua* at the end
-
-[templates.hyprpaper]
-input_path = '~/.config/matugen/templates/hyprpaper.conf'
-output_path = '~/.config/hypr/hyprpaper.conf'
 
 [templates.mako]
 input_path = '~/.config/matugen/templates/mako'

@@ -5,7 +5,7 @@
 
 [mgr]
 ratio          = [ 1, 4, 3 ]
-# sort_by        = "btime"
+sort_by        = "natural"
 sort_sensitive = false
 sort_reverse 	 = false
 sort_dir_first = true
@@ -45,9 +45,6 @@ play = [
 ]
 open = [
 	{ run = "xdg-open %s1",    desc = "Open", for = "linux" },
-	{ run = "open %s",         desc = "Open", for = "macos" },
-	{ run = 'start "" %s1',    desc = "Open", for = "windows", orphan = true },
-	{ run = "termux-open %s1", desc = "Open", for = "android" },
 ]
 reveal = [
 	{ run = "xdg-open %d1",         desc = "Reveal", for = "linux" },

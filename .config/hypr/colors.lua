@@ -1,7 +1,7 @@
 return {
-    image = "/home/leo/Pictures/Wallpapers/spiderman.png",
+    image = "/home/leo/Pictures/Wallpapers/gloomy_landscape.jpg",
 
-    background = "0xff1a120e",
+    background = "0xff0f1416",
 
     error = "0xffffece9",
 
@@ -9,11 +9,11 @@ return {
 
     inverse_on_surface = "0xff000000",
 
-    inverse_primary = "0xff723818",
+    inverse_primary = "0xff004f5f",
 
-    inverse_surface = "0xfff0dfd8",
+    inverse_surface = "0xffdee3e6",
 
-    on_background = "0xfff0dfd8",
+    on_background = "0xffdee3e6",
 
     on_error = "0xff000000",
 
@@ -25,7 +25,7 @@ return {
 
     on_primary_fixed = "0xff000000",
 
-    on_primary_fixed_variant = "0xff240900",
+    on_primary_fixed_variant = "0xff001419",
 
     on_secondary = "0xff000000",
 
@@ -33,7 +33,7 @@ return {
 
     on_secondary_fixed = "0xff000000",
 
-    on_secondary_fixed_variant = "0xff1f0c04",
+    on_secondary_fixed_variant = "0xff001419",
 
     on_surface = "0xffffffff",
 
@@ -45,60 +45,60 @@ return {
 
     on_tertiary_fixed = "0xff000000",
 
-    on_tertiary_fixed_variant = "0xff141100",
+    on_tertiary_fixed_variant = "0xff090e2c",
 
-    outline = "0xffffece5",
+    outline = "0xffe9f1f5",
 
-    outline_variant = "0xffd3beb6",
+    outline_variant = "0xffbbc4c7",
 
-    primary = "0xffffece5",
+    primary = "0xffd8f5ff",
 
-    primary_container = "0xffffb08a",
+    primary_container = "0xff81cee4",
 
-    primary_fixed = "0xffffdbcb",
+    primary_fixed = "0xffafecff",
 
-    primary_fixed_dim = "0xffffb693",
+    primary_fixed_dim = "0xff85d2e8",
 
     scrim = "0xff000000",
 
-    secondary = "0xffffece5",
+    secondary = "0xffdbf4fd",
 
-    secondary_container = "0xffe2baa8",
+    secondary_container = "0xffaec7cf",
 
-    secondary_fixed = "0xffffdbcb",
+    secondary_fixed = "0xffcee7ef",
 
-    secondary_fixed_dim = "0xffe6beac",
+    secondary_fixed_dim = "0xffb2cbd3",
 
     shadow = "0xff000000",
 
-    source_color = "0xffbd581d",
+    source_color = "0xff345660",
 
-    surface = "0xff1a120e",
+    surface = "0xff0f1416",
 
-    surface_bright = "0xff594e49",
+    surface_bright = "0xff4b5153",
 
-    surface_container = "0xff382e2a",
+    surface_container = "0xff2c3133",
 
-    surface_container_high = "0xff443934",
+    surface_container_high = "0xff373c3e",
 
-    surface_container_highest = "0xff50443f",
+    surface_container_highest = "0xff42484a",
 
-    surface_container_low = "0xff271e1a",
+    surface_container_low = "0xff1b2022",
 
     surface_container_lowest = "0xff000000",
 
-    surface_dim = "0xff1a120e",
+    surface_dim = "0xff0f1416",
 
-    surface_tint = "0xffffb693",
+    surface_tint = "0xff85d2e8",
 
-    surface_variant = "0xff52443d",
+    surface_variant = "0xff40484b",
 
-    tertiary = "0xfffbf1b6",
+    tertiary = "0xffefeeff",
 
-    tertiary_container = "0xffccc48c",
+    tertiary_container = "0xffbcc0e7",
 
-    tertiary_fixed = "0xffede4aa",
+    tertiary_fixed = "0xffdee0ff",
 
-    tertiary_fixed_dim = "0xffd0c890",
+    tertiary_fixed_dim = "0xffc0c4eb",
 
 }

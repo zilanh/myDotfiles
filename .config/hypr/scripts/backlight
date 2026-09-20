@@ -3,7 +3,7 @@
 iDIR="$HOME/.config/mako/icons"
 notifTime=500
 
-expVal=4
+expVal=2
 
 # Get brightness
 get_backlight() {
@@ -49,7 +49,7 @@ inc_backlight() {
 
 # Decrease brightness
 dec_backlight() {
-  brightnessctl -n2 --exponent=$expVal set 5%- && get_icon && notify_user
+  brightnessctl -n20 --exponent=$expVal set 5%- && get_icon && notify_user
 }
 
 # Execute accordingly

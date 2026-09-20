@@ -7,9 +7,9 @@ alias grep='grep --color=auto'
 alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 alias v='nvim'
 alias vpn="sudo wg-quick"
-alias vpn-down="sudo wg-quick down se-sto && wg-quick down fi-hel && wg-quick down fr-par"
 alias cd="z"
 alias ff='fastfetch'
+
 autoload -Uz compinit promptinit
 compinit
 promptinit
@@ -17,7 +17,7 @@ promptinit
 bindkey -v # Vim keybindings
 
 # Open directory in terminal when quitting yazi 
-function yazi_termdir() {
+function y() {
 	local tmp cwd; tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	command yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"

@@ -44,7 +44,8 @@ play = [
 	{ run = "mediainfo %s1 & pause", block = true, desc = "Show media info", for = "windows" },
 ]
 open = [
-	{ run = "xdg-open %s1",    desc = "Open", for = "linux" },
+	# { run = "xdg-open %s1",    desc = "Open", for = "linux" },
+	{ run = "gio open %s1",    desc = "Open", for = "linux" },
 ]
 reveal = [
 	{ run = "xdg-open %d1",         desc = "Reveal", for = "linux" },

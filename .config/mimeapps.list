@@ -189,3 +189,9 @@ message/rfc822=userapp-Thunderbird-TSIQV3.desktop
 x-scheme-handler/webcals=userapp-Thunderbird-P9PPV3.desktop
 application/x-extension-ics=userapp-Thunderbird-P9PPV3.desktop
 x-scheme-handler/net.thunderbird=userapp-Thunderbird-VHFOV3.desktop
+x-scheme-handler/pttp=CiscoPacketTracerPtsa-9.0.1.desktop
+application/x-pka=CiscoPacketTracer-9.0.1.desktop
+application/x-pkt=CiscoPacketTracer-9.0.1.desktop
+application/x-pkz=CiscoPacketTracer-9.0.1.desktop
+application/x-pksz=CiscoPacketTracer-9.0.1.desktop
+

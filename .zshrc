@@ -9,7 +9,7 @@ alias v='nvim'
 alias vpn="sudo wg-quick"
 alias cd="z"
 alias ff='fastfetch'
-
+alias t='trans -b'
 autoload -Uz compinit promptinit
 compinit
 promptinit

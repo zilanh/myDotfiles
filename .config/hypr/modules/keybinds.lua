@@ -32,23 +32,24 @@ end, { locked = true })
 
 hl.bind("switch:off:Lid Switch", hl.dsp.exec_cmd("notify-send 'yoooo welcome back'"), { locked = true })
 hl.bind(mainMod .. " + M", hl.dsp.submap("menu"))
-hl.define_submap("menu", function()
+
+hl.define_submap("menu", "reset", function()
 	hl.bind("escape", hl.dsp.submap("reset"))
+	hl.bind(mainMod .. " + M", hl.dsp.submap("reset"))
+	hl.bind(mainMod .. " + Space", function()
+		hl.dsp.submap("reset")
+	end)
 	hl.bind("B", function()
 		hl.dispatch(hl.dsp.exec_cmd("foot -e bluetui"))
-		hl.dispatch(hl.dsp.submap("reset"))
 	end)
 	hl.bind("S", function()
 		hl.dispatch(hl.dsp.exec_cmd("foot wiremix --tab output"))
-		hl.dispatch(hl.dsp.submap("reset"))
 	end)
 	hl.bind("W", function()
 		hl.dispatch(hl.dsp.exec_cmd("networkmanager_dmenu"))
-		hl.dispatch(hl.dsp.submap("reset"))
 	end)
 	hl.bind("L", function()
 		hl.dispatch(hl.dsp.exec_cmd("hyprlock"))
-		hl.dispatch(hl.dsp.submap("reset"))
 	end)
 	hl.bind("T", function()
 		hl.dispatch(
@@ -89,12 +90,13 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
+hl.bind(mainMod .. " + P", hl.dsp.window.pin({ action = "toggle" }))
 hl.bind(
 	mainMod .. " + Space",
 	hl.dsp.exec_cmd("pkill rofi || rofi -show combi -modes combi -combi-modes 'window,drun'")
 )
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("pkill rofi || rofi -show recursivebrowser"))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+-- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("pkill waybar || waybar"))
 hl.bind(mainMod .. " + ISO_Level3_Shift", hl.dsp.exec_cmd("hyprctl switchxkblayout all next"))
@@ -111,12 +113,6 @@ hl.bind(
 	"SHIFT + Print",
 	hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | tee ' .. saveLocation .. " | wl-copy && " .. notifyScreenshot)
 )
--- hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim - | tee " .. saveLocation .. " | wl-copy"))
--- hl.bind(
--- 	mainMod .. " + SHIFT + Print",
--- 	hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | tee ' .. saveLocation .. " | wl-copy")
--- )
-
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
@@ -176,31 +172,6 @@ hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
--- Laptop multimedia keys for volume and LCD brightness
--- hl.bind(
--- 	"XF86AudioRaiseVolume",
--- 	hl.dsp.exec_cmd("~/.config/hypr/scripts/volume --inc"),
--- 	-- hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
--- 	{ locked = true, repeating = true }
--- )
--- hl.bind(
--- 	"XF86AudioLowerVolume",
--- 	-- hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
--- 	hl.dsp.exec_cmd("~/.config/hypr/scripts/volume --dec"),
--- 	{ locked = true, repeating = true }
--- )
--- hl.bind(
--- 	"XF86AudioMute",
--- 	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
--- 	{ locked = true, repeating = true }
--- )
--- hl.bind(
--- 	"XF86AudioMicMute",
--- 	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
--- 	{ locked = true, repeating = true }
--- )
--- hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
--- hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 hl.bind(
 	"XF86AudioRaiseVolume",
 	hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/volume --inc"),

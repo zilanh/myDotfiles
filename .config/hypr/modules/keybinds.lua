@@ -198,7 +198,7 @@ hl.bind("XF86Display", function()
 		hl.exec_cmd("wlopm --on eDP-1")
 		monitorOff = false
 	end
-end)
+end, { locked = true })
 
 -- hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("~/.config/hypr/scripts/backlight --inc"), { locked = true })
 hl.bind("XF86MonBrightnessUp", function()

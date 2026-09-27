@@ -139,6 +139,7 @@ rnote
 rofi
 rsync
 slurp
+smartmontools
 sof-firmware
 strace
 system-config-printer

@@ -10,6 +10,9 @@ alias vpn="sudo wg-quick"
 alias cd="z"
 alias ff='fastfetch'
 alias t='trans -b'
+alias sctl='sudo systemctl'
+alias sstatus='systemctl status'
+
 autoload -Uz compinit promptinit
 compinit
 promptinit

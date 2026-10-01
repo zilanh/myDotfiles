@@ -14,11 +14,11 @@ end
 ---------------------
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. "+ Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. "+ Return", hl.dsp.exec_cmd(terminal), { repeating = true })
 -- local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close)
 -- closeWindowBind:set_enabled(true)
 
-hl.bind(mainMod .. " + W", hl.dsp.window.close())
+hl.bind(mainMod .. " + W", hl.dsp.window.close(), { repeating = true })
 -- hl.bind(
 -- 	mainMod .. " + M",
 -- 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")

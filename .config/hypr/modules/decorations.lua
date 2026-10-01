@@ -2,6 +2,8 @@
 ---- LOOK AND FEEL ----
 -----------------------
 
+local colors = require("colors")
+
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
 	general = {
@@ -12,7 +14,8 @@ hl.config({
 
 		col = {
 			-- active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-			active_border = "rgb(eead85)",
+			-- active_border = "rgb(eead85)",
+			active_border = string.gsub(colors.primary_fixed, "0xff", "0xaa"),
 			inactive_border = "rgba(595959aa)",
 		},
 
@@ -27,11 +30,11 @@ hl.config({
 
 	decoration = {
 		rounding = 10,
-		rounding_power = 2.4,
+		rounding_power = 4,
 
 		-- Change transparency of focused and unfocused windows
 		active_opacity = 1,
-		inactive_opacity = 0.8,
+		inactive_opacity = 0.82,
 
 		shadow = {
 			enabled = true,
@@ -44,10 +47,10 @@ hl.config({
 		blur = {
 			enabled = true,
 			ignore_opacity = true,
-			size = 8,
+			size = 5,
 			passes = 2,
 			-- vibrancy = 0.1696,
-			vibrancy = 0.8,
+			vibrancy = 0.5,
 		},
 	},
 

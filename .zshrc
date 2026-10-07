@@ -10,8 +10,10 @@ alias vpn="sudo wg-quick"
 alias cd="z"
 alias ff='fastfetch'
 alias t='trans -b'
+alias dnsreload='sudo systemctl restart systemd-resolved.service'
 alias sctl='sudo systemctl'
 alias sstatus='systemctl status'
+alias wp='matugen --show-colors image $HOME/Pictures/Wallpapers/$(ls $HOME/Pictures/Wallpapers/ | rofi -dmenu)'
 
 autoload -Uz compinit promptinit
 compinit

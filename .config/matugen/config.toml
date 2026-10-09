@@ -18,6 +18,10 @@ input_path = '~/.config/matugen/templates/cava-colors.ini'
 output_path = '~/.config/cava/themes/matugen-theme'
 post_hook = 'pkill -USR1 cava || true '
 
+# [templates.firefox-website-colors]
+# input_path = "~.config/matugen/templates/"
+# output_path = "~/.mozilla/firefox/k40brvei.default-release/chrome"
+
 [templates.foot]
 input_path  = '~/.config/matugen/templates/foot-colors.ini'
 output_path = '~/.config/foot/foot-colors.ini'

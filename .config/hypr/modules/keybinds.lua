@@ -30,8 +30,11 @@ hl.bind("switch:on:Lid Switch", function()
 	end
 end, { locked = true })
 
-hl.bind("switch:off:Lid Switch", hl.dsp.exec_cmd("notify-send 'yoooo welcome back'"), { locked = true })
+hl.bind("switch:off:Lid Switch", hl.dsp.exec_cmd("notify-send 'Hi there!'"), { locked = true })
 hl.bind(mainMod .. " + M", hl.dsp.submap("menu"))
+
+local Wallpapers = "$HOME/Pictures/Wallpapers"
+local matugenScheme = "scheme-smart"
 
 hl.define_submap("menu", "reset", function()
 	hl.bind("escape", hl.dsp.submap("reset"))
@@ -53,7 +56,9 @@ hl.define_submap("menu", "reset", function()
 	end)
 	hl.bind("T", function()
 		hl.dispatch(
-			hl.dsp.exec_cmd("matugen image $HOME/Pictures/Wallpapers/$(ls $HOME/Pictures/Wallpapers/ | rofi -dmenu)")
+			hl.dsp.exec_cmd(
+				"matugen image -t " .. matugenScheme .. " " .. Wallpapers .. "/$(ls " .. Wallpapers .. " | rofi -dmenu)"
+			)
 		)
 		hl.dispatch(hl.dsp.submap("reset"))
 	end)
@@ -165,8 +170,8 @@ hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }), { repeating = true })
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }), { repeating = true })
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })

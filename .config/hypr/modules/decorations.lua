@@ -58,3 +58,13 @@ hl.config({
 		enabled = true,
 	},
 })
+
+hl.layer_rule({
+	name = "mako",
+	match = {
+		namespace = "notifications",
+	},
+	blur = true,
+	xray = true,
+	ignore_alpha = 0.1,
+})

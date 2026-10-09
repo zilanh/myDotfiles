@@ -48,6 +48,7 @@ foot-terminfo
 fzf
 gdb
 geogebra
+gimp
 git
 gpick
 grim
